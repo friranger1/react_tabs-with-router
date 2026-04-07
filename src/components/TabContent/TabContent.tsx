@@ -7,7 +7,7 @@ export const TabContent = ({ tabs }: { tabs: Tab[] }) => {
 
   return (
     <div className="block" data-cy="TabContent">
-      {selectedTab ? selectedTab.content : 'Tab not found'}
+      {selectedTab ? selectedTab.content : 'Please select a tab'}
     </div>
   );
 };
