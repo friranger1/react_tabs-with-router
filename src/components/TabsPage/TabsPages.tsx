@@ -1,4 +1,4 @@
-import { NavLink, useParams } from 'react-router-dom';
+import { Link, useParams, Outlet } from 'react-router-dom';
 import { Tab } from '../../types/Tab';
 import classNames from 'classnames';
 
@@ -7,7 +7,6 @@ type Props = {
 };
 export const TabsPage = ({ tabs }: Props) => {
   const { tabId } = useParams();
-  const selectedTab = tabs.find(tab => tab.id === tabId);
 
   return (
     <>
@@ -21,15 +20,13 @@ export const TabsPage = ({ tabs }: Props) => {
                 data-cy="Tab"
                 className={classNames({ 'is-active': tab.id === tabId })}
               >
-                <NavLink to={`/tabs/${tab.id}`}>{tab.title}</NavLink>
+                <Link to={`/tabs/${tab.id}`}>{tab.title}</Link>
               </li>
             );
           })}
         </ul>
       </div>
-      <div className="block" data-cy="TabContent">
-        {selectedTab ? selectedTab.content : 'Please select a tab'}
-      </div>
+      <Outlet />
     </>
   );
 };
